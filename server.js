@@ -102,6 +102,11 @@ server.use(
 );
 
 server.use(
+    '/feeds/like',
+    FeedsRoutes
+);
+
+server.use(
     '/users', 
     UsersRoutes
 );

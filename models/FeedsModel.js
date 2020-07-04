@@ -9,7 +9,8 @@ const FeedsSchema = new mongoose.Schema (
             required: true
         }, 
         username: {
-            type: String, // mongoose.Schema.Type.ObjectId
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'username',
             required: true
         },
         hashtags: {
@@ -26,8 +27,20 @@ const FeedsSchema = new mongoose.Schema (
             type: Array,
             required: true
         }
+    },
+    {timestamps: true,
+        toObject: {virtuals:true},
+        toJSON: {virtuals: true}
     }
 );
+
+FeedsSchema.virtual('likeCount',
+{
+    ref: 'likes',
+    localField: '_id',
+    foreignField: 'postId',
+    count: true
+});
 
 // Model
 const FeedsModel = mongoose.model('feeds', FeedsSchema);
