@@ -17,6 +17,9 @@ const passport = require('passport');
     // The same secret in routes/UserRoutes will be needed to read the jsonwebtoken
     const secret = "Srts3%$#Qtq";
 
+// Import cors (for the backend to be able to read an external source, e.g. frontend)
+const cors = require('cors');
+
 // To find the user in the DB
 const UsersModel = require('./models/UsersModel');
 
@@ -56,6 +59,7 @@ passport.use(
 const ProductsRoutes = require('./routes/ProductsRoutes');
 const FeedsRoutes = require('./routes/FeedsRoutes');
 const UsersRoutes = require('./routes/UsersRoutes');
+const EmailsRoutes = require('./routes/EmailsRoutes');
 
 // Create the server object 
 const server = express();
@@ -64,6 +68,7 @@ const server = express();
 server.use(bodyParser.urlencoded({extended: false}));
 server.use(bodyParser.json());
 server.use(passport.initialize());
+server.use(cors());
 
 // Invoke passportJwt and pass the passport npm package as argument
 passportJwt(passport);
@@ -109,6 +114,11 @@ server.use(
 server.use(
     '/users', 
     UsersRoutes
+);
+
+server.use(
+    '/emails', 
+    EmailsRoutes
 );
 
 // Create a route for the landing page
