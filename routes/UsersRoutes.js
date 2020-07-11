@@ -41,11 +41,11 @@ router.post(
                                     (err, dbResult) => {
                                         // If something goes wrong, send error
                                         if(err) {
-                                            res.send (err);
+                                            res.json (err);
                                         } 
                                         //Otherwise, send success message
                                         else {
-                                        res.send ('User has been saved')
+                                        res.json ('User has been saved')
                                         }
                                     }
                                 )
@@ -75,7 +75,7 @@ router.post(
                 
             // Step 2b. If email DOES NOT match, reject the login request
                 if (!document) {
-                    res.send("Please check email or password");
+                    res.json("Please check email or password");
                 }
             // Step 3. If there's matching email, examine the document's password
                 else {
@@ -96,7 +96,7 @@ router.post(
                                     payload,
                                     secret,
                                     (err, jsonwebtoken)  => {
-                                        res.send(
+                                        res.json(
                                             {
                                             msg: 'Login sucessful',
                                             jsonwebtoken: jsonwebtoken
@@ -107,7 +107,7 @@ router.post(
                             }
                             // Step 5b. If password DOES NOT match, reject login request
                             else {
-                            res.send ("Please check email or password");
+                            res.json ("Please check email or password");
                             }
                         }
                     )
