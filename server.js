@@ -96,7 +96,7 @@ mongoose.connect(
 // Links server.js to ProductsRoutes.js and FeedsRoutes.js
 server.use(
     '/products', 
-    passport.authenticate('jwt', {session:false}), // Use passport-jwt to authenticate
+    //passport.authenticate('jwt', {session:false}), // Use passport-jwt to authenticate
     ProductsRoutes
 );
 
