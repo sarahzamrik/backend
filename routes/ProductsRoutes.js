@@ -35,14 +35,14 @@ router.post(
     '/update',
     (req, res) => {
         const formData = {
-            qty: req.body.qty,
+            quantity: req.body.quantity,
             _id: req.body._id
         };
 
         ProductsModel
         .findOneAndUpdate(
             { _id: formData._id }, // search criteria
-            { qty: formData.qty }, // the keys & values to update
+            { quantity: formData.quantity }, // the keys & values to update
             {}, // options (if any)
             (err, document) => {
 
