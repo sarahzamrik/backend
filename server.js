@@ -77,7 +77,7 @@ server.use(cors());
 passportJwt(passport);
 
 // Enter your database coonection URL
-const dbURL = process.env.GB_URL; 
+const dbURL = process.env.DB_URL; 
 
 mongoose.connect(
     dbURL, 
