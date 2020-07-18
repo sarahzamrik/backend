@@ -7,7 +7,8 @@ const bcrypt = require('bcrypt');
 // Generate webtoken
 const jwt = require ('jsonwebtoken');
 // Create secret
-const secret = "Srts3%$#Qtq";
+require('dotenv').config();
+const secret = process.env.SECRET;
 // Import the FeedsModel
 const UsersModel = require('../models/UsersModel');
 

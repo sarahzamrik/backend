@@ -7,6 +7,9 @@ const mongoose = require('mongoose');
 // Import body-parser
 const bodyParser = require('body-parser');
 
+// Import dotenv
+require('dotenv').config();
+
 // Import passport package
 const passport = require('passport');
 
@@ -15,7 +18,7 @@ const passport = require('passport');
     const ExtractJwt = require('passport-jwt').ExtractJwt;
     
     // The same secret in routes/UserRoutes will be needed to read the jsonwebtoken
-    const secret = "Srts3%$#Qtq";
+    const secret = process.env.SECRET;
 
 // Import cors (for the backend to be able to read an external source, e.g. frontend)
 const cors = require('cors');
@@ -74,7 +77,7 @@ server.use(cors());
 passportJwt(passport);
 
 // Enter your database coonection URL
-const dbURL = "mongodb+srv://Admin01:katatonia94@cluster0-lug9b.mongodb.net/test?retryWrites=true&w=majority"
+const dbURL = process.env.GB_URL; 
 
 mongoose.connect(
     dbURL, 
